@@ -5,9 +5,9 @@ public class ArrayUtil {
         int[] array = {2, 43, 54, 25, 74, 3, 56, 7, 4, 1};
         //Home-work 2
         for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+            System.out.print(array[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
 
 
 
@@ -17,10 +17,7 @@ public class ArrayUtil {
                 max = array[i];
             }
         }
-        System.out.println(max);
-        System.out.println("\n");
-
-
+        System.out.println("Самое большое число: " + max);
 
         int min = max;
         for (int i = 0; i < array.length; i++) {
@@ -28,7 +25,7 @@ public class ArrayUtil {
                 min = array[i];
             }
         }
-        System.out.println(min);
+        System.out.println("Самое маленькое число: " + min);
         //Home-work 3
         int numEvenNum = 0, numOddNum = 0, elementSum = 0;
         System.out.print("Մասիվի բոլոր զույգ էլեմենտները: ");
