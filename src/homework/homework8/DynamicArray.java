@@ -44,6 +44,71 @@ public class DynamicArray {
         for (int i = 0; i < size; i++) {
             System.out.print(array[i] + " ");
         }
+        System.out.println();
+    }
+    //HOME-WORK 9
+    //ջնջել մասիվի index-երորդ էլեմենտը
+    //եթե չկա նման ինդեքսով էլեմենտ, տպել, որ չկա նման էլեմենտ
+    public void deleteByIndex(int index) {
+        if (array[index] == 0) {
+            System.out.println("նման էլեմենտ չկա");
+        }
+        array[index] = 0;
+    }
+
+    //տրված value-ն դնելու ենք տրված index-ով էլեմենտի տեղը։
+    //Հին արժեքը կկորի
+    //եթե նման ինդեքսով էլեմենտ չկա, գրում ենք որ չկա։
+    public void set(int index, int value) {
+        if (array[index] == 0) {
+            System.out.println("նման ինդեքսով էլեմենտ չկա");
+        }
+        array[index] = value;
+    }
+
+    //ավելացնել տրված value-ն տրված ինդեքսում, իսկ էղած էլեմենտները մի հատ աջ տանել։
+    //Եթե չկա նման ինդեքս, տպել որ չկա
+    public void add(int index, int value) {
+        if (index < 0 || index > size) {
+            System.out.println("նման ինդեքս չկա");
+        }
+        int tmp = array[index];
+        array[index] = value;
+        for (int i = index; i < size; i++) {
+            int tmp2 = array[i + 1];
+            array[i + 1] = tmp;
+            tmp = tmp2;
+        }
+        size++;
+    }
+
+    //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
+    public boolean exists(int value) {
+        boolean tmp = false;
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
+                tmp = true;
+                break;
+            } else {
+                tmp = false;
+            }
+        }
+        return tmp;
+    }
+
+    //Վերադարձնել տրված value-ի ինդեքսը, եթե շատ կա տվյալ թվից, վերադարձնել առաջին ինդեքսը։
+    //եթե չկա, -1
+    public int getIndexByValue(int value) {
+        int tmp = -1;
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
+                tmp = i;
+                break;
+            } else {
+                tmp = -1;
+            }
+        }
+        return tmp;
     }
 }
 
