@@ -34,9 +34,8 @@ public class DynamicArray {
         if (index < 0 || index > size) {
             System.out.println("Wrong index");
             return -1;
-        } else {
-            return array[index];
         }
+        return array[index];
     }
 
     //տպել մասիվի ավելացված էլեմենտները
@@ -46,6 +45,7 @@ public class DynamicArray {
         }
         System.out.println();
     }
+
     //HOME-WORK 9
     //ջնջել մասիվի index-երորդ էլեմենտը
     //եթե չկա նման ինդեքսով էլեմենտ, տպել, որ չկա նման էլեմենտ
@@ -72,14 +72,14 @@ public class DynamicArray {
         if (index < 0 || index > size) {
             System.out.println("նման ինդեքս չկա");
         }
-        int tmp = array[index];
-        array[index] = value;
-        for (int i = index; i < size; i++) {
-            int tmp2 = array[i + 1];
-            array[i + 1] = tmp;
-            tmp = tmp2;
-        }
         size++;
+        if (size == array.length - 1) {
+            extend();
+        }
+        for (int i = size; i >= index; i--) {
+            array[i + 1] = array[i];
+        }
+        array[index] = value;
     }
 
     //Վերադարձնել true եթե տրված value-ն կա մեր մասիվի մեջ, եթե ոչ false
@@ -89,8 +89,6 @@ public class DynamicArray {
             if (array[i] == value) {
                 tmp = true;
                 break;
-            } else {
-                tmp = false;
             }
         }
         return tmp;
@@ -104,8 +102,6 @@ public class DynamicArray {
             if (array[i] == value) {
                 tmp = i;
                 break;
-            } else {
-                tmp = -1;
             }
         }
         return tmp;

@@ -11,9 +11,11 @@ public class DynamicArrayDemo {
         dy.add(4);
         dy.add(1);
         dy.print();
-        dy.add(2, 3);
+        dy.add(5, 3);
+        dy.add(3, 3);
         dy.print();
         System.out.println(dy.getByIndex(2));
+        System.out.println(dy.getByIndex(-8));
         dy.deleteByIndex(5);
         dy.print();
         dy.set(0, 34);
