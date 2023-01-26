@@ -53,7 +53,10 @@ public class DynamicArray {
         if (array[index] == 0) {
             System.out.println("նման էլեմենտ չկա");
         }
-        array[index] = 0;
+        for (int i = index + 1; i < size; i++) {
+            array[i - 1] = array[i];
+        }
+        size--;
     }
 
     //տրված value-ն դնելու ենք տրված index-ով էլեմենտի տեղը։
