@@ -26,6 +26,14 @@ public class Stack {
     }
 
     public int arrayLastElement() {
-        return array[size];
+        if (size < 0 || size > array.length - 1) {
+            return -1;
+        } else {
+            return array[size];
+        }
+    }
+
+    public int arrayLastElementIndex() {
+        return size;
     }
 }
