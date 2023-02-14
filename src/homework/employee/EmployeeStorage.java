@@ -61,4 +61,53 @@ public class EmployeeStorage {
             }
         }
     }
+
+    public void searchBySalary(double num1, double num2) {
+        for (int i = 0; i < size; i++) {
+            Employee employee = array[i];
+            if (num2 > employee.getSalary() && num1 < employee.getSalary()) {
+                System.out.println(array[i]);
+            }
+        }
+    }
+
+    public void changeEmployeePositionById(String employeeId, String newPosition) {
+        for (int i = 0; i < size; i++) {
+            Employee employee = array[i];
+            if (employee.getEmployeeID().equals(employeeId)) {
+                employee.setPosition(newPosition);
+            }
+        }
+    }
+
+    public void printOnlyActiveEmployees() {
+        for (int i = 0; i < size; i++) {
+            Employee employee = array[i];
+            if (employee.isActive() == true) {
+                System.out.println(array[i]);
+            }
+        }
+    }
+
+    public void inactiveEmployeeById(String id) {
+        for (int i = 0; i < size; i++) {
+            Employee employee = array[i];
+            if (employee.getEmployeeID().toLowerCase().contains(id.toLowerCase())) {
+                if (employee.isActive() == true) {
+                    employee.setActive(false);
+                }
+            }
+        }
+    }
+
+    public void activateEmployeeById(String id) {
+        for (int i = 0; i < size; i++) {
+            Employee employee = array[i];
+            if (employee.getEmployeeID().toLowerCase().contains(id.toLowerCase())) {
+                if (employee.isActive() == false) {
+                    employee.setActive(true);
+                }
+            }
+        }
+    }
 }
