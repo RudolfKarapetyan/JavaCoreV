@@ -1,5 +1,7 @@
 package homework.employee;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
@@ -10,17 +12,22 @@ public class Employee {
     private String company;
     private String position;
     boolean active = true;
+    private String dateOfBirthday;
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    private Date registerDate1 = new Date();
+    private String registerDate = df.format(registerDate1);
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String employeeID, double salary, String company, String position) {
+    public Employee(String name, String surname, String employeeID, double salary, String company, String position, String dateOfBirthday) {
         this.name = name;
         this.surname = surname;
         this.employeeID = employeeID;
         this.salary = salary;
         this.company = company;
         this.position = position;
+        this.dateOfBirthday = dateOfBirthday;
     }
 
     public String getName() {
@@ -79,6 +86,10 @@ public class Employee {
         this.active = active;
     }
 
+    public String getDateOfBirthday() {
+        return dateOfBirthday;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -119,7 +130,8 @@ public class Employee {
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
-                ", active='" + active + '\'' +
+                ", dateOfBirthday='" + dateOfBirthday + '\'' +
+                ", registerDate='" + registerDate + '\'' +
                 '}';
     }
 }
