@@ -1,6 +1,7 @@
 package homework.medicalCenter.demo;
 
 import homework.medicalCenter.MedicalCenterInterface;
+import homework.medicalCenter.Profession;
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.model.Person;
@@ -98,10 +99,12 @@ public class MedicalCenterDemo implements MedicalCenterInterface {
                 doctor.setSurname(split[1]);
                 doctor.setEmail(split[2]);
                 doctor.setPhoneNumber(split[3]);
-                doctor.setProfession(split[4]);
+                doctor.setProfession(Profession.valueOf(split[4]));
                 System.out.println("Data updated!");
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("You entered little data. Please try again!");
+            }catch (IllegalArgumentException e){
+                System.out.println("You entered the wrong profession");
             }
         }
     }
@@ -115,11 +118,15 @@ public class MedicalCenterDemo implements MedicalCenterInterface {
     private static void searchDoctorByProfession() {
         System.out.println("Please input profession");
         String profession = scanner.nextLine();
-        personStorage.searchDoctorByProfession(profession);
+        try {
+            personStorage.searchDoctorByProfession(Profession.valueOf(profession));
+        } catch (IllegalArgumentException e) {
+            System.out.println("You entered the wrong profession");
+        }
     }
 
     private static void addDoctor() {
-        System.out.println("Please input name,surname,id,email,phoneNumber,profession");
+        System.out.println("Please input name,surname,id,email,phoneNumber");
         try {
             String data = scanner.nextLine();
             String[] split = data.split(",");
@@ -129,11 +136,17 @@ public class MedicalCenterDemo implements MedicalCenterInterface {
             doctor.setId(split[2]);
             doctor.setEmail(split[3]);
             doctor.setPhoneNumber(split[4]);
-            doctor.setProfession(split[5]);
+            System.out.println("Choose one of the professions:");
+            for (Profession values : Profession.values()) {
+                System.out.println(values);
+            }
+            doctor.setProfession(Profession.valueOf(scanner.nextLine()));
             personStorage.add((Person) doctor);
             System.out.println("Doctor added");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("You entered little data. Please try again!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("You entered the wrong profession");
         }
     }
 

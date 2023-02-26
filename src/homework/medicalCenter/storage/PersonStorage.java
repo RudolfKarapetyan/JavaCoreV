@@ -1,5 +1,6 @@
 package homework.medicalCenter.storage;
 
+import homework.medicalCenter.Profession;
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.model.Person;
@@ -59,9 +60,9 @@ public class PersonStorage {
         }
     }
 
-    public void searchDoctorByProfession(String profession) {
+    public void searchDoctorByProfession(Profession profession) {
         for (int i = 0; i < size; i++) {
-            if (persons[i] instanceof Doctor && ((Doctor) persons[i]).getProfession().toLowerCase().contains(profession.toLowerCase())) {
+            if (persons[i] instanceof Doctor && ((Doctor) persons[i]).getProfession() == profession) {
                 System.out.println(persons[i]);
             }
         }
@@ -84,7 +85,7 @@ public class PersonStorage {
                 ((Doctor) persons[i]).setName(name);
                 ((Doctor) persons[i]).setSurname(surname);
                 ((Doctor) persons[i]).setEmail(email);
-                ((Doctor) persons[i]).setProfession(profession);
+                ((Doctor) persons[i]).setProfession(Profession.valueOf(profession));
             }
         }
     }
