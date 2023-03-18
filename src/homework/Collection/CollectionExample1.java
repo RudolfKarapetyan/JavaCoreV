@@ -77,7 +77,7 @@ public class CollectionExample1 implements Commands {
         System.out.println("Please input name");
         String name = scanner.nextLine();
         for (String names : nameList) {
-            if (names.toLowerCase().equals(name.toLowerCase())) {
+            if (names.equalsIgnoreCase(name)) {
                 System.out.println("This name is found");
                 return true;
             }

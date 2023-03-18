@@ -1,15 +1,14 @@
 package homework.Collection;
 
-import chapter7.Test;
-
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.TreeSet;
-import java.util.stream.Stream;
+import java.util.HashSet;
 
 public class CollectionExample2 implements Commands2 {
-    private static ArrayList<String> names = new ArrayList<>();
+    private static List<String> names = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -36,7 +35,7 @@ public class CollectionExample2 implements Commands2 {
     }
 
     private static void printSort() {
-        TreeSet<String> nameSort = new TreeSet<>();
+        Set<String> nameSort = new TreeSet<>();
         for (String name : names) {
             nameSort.add(name);
         }
@@ -46,7 +45,7 @@ public class CollectionExample2 implements Commands2 {
     }
 
     private static void print() {
-        HashSet<String> namesHashSet = new HashSet<>();
+        Set<String> namesHashSet = new HashSet<>();
         for (String name : names) {
             namesHashSet.add(name);
         }
